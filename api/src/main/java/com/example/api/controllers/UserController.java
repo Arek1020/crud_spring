@@ -19,7 +19,7 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-    private List<String> users = new ArrayList<>();
+
     @GetMapping
     public List<User> getAllUsers() {
         List<User> users = userService.getAllUsers();
@@ -30,7 +30,6 @@ public class UserController {
         User dbUser = userService.saveUser(user);
         return dbUser;
     }
-
     @PutMapping("/{id}")
     public String updateUser(@PathVariable Long id, @RequestBody UserDTO user) {
         userService.updateUser(user);
