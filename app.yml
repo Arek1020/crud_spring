@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  postgres:
+    container_name: java-crud-postgres
+    image: java-crud-postgres
+    ports:
+      - 5432:5432
+    networks:
+      - main
+
+  api:
+    container_name: java-crud-app
+    image: java-crud-app
+    ports: 
+      - 8080:8080
+    depends_on:
+      - postgres
+    restart: always
+    networks:
+      - main
+    
+networks:
+  main:
+    ipam:
+      driver: default
+      config:
+      - subnet: 192.168.3.0/24
