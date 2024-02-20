@@ -13,5 +13,5 @@ USER postgres
 # Expose PostgreSQL port
 EXPOSE 5432
 
-COPY dump_file.sql /.
+COPY shop_db.sql /.
 COPY setup.sh /docker-entrypoint-initdb.d
